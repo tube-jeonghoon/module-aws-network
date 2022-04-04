@@ -11,7 +11,7 @@ locals {
 resource "aws_vpc" "main" {
   cidr_block = var.main_vpc_cidr
   tags = {
-    "Name"                                        = local.pac_name,
+    "Name"                                        = local.vpc_name,
     "kubernetes.io/cluster/${local.cluster_name}" = "shared",
   }
 }
