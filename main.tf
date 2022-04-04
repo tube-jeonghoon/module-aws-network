@@ -24,9 +24,9 @@ data "aws_availability_zones" "available" {
 resource "aws_subnet" "public-subnet-a" {
   vpc_id                 = aws_vpc.main.id
   cidr_block             = var.public_subnet_a_cidr
-  aws_availability_zones = data.aws_availability_zones.available.names[0]
+  availability_zones = data.aws_availability_zones.available.names[0]
 
-  tag = {
+  tags = {
     "Name" = (
       "${local.vpc_name}-public-subnet-a"
     )
@@ -38,9 +38,9 @@ resource "aws_subnet" "public-subnet-a" {
 resource "aws_subnet" "public-subnet-b" {
   vpc_id                 = aws_vpc.main.id
   cidr_block             = var.public_subnet_b_cidr
-  aws_availability_zones = data.aws_availability_zones.available.names[1]
+  availability_zones = data.aws_availability_zones.available.names[1]
 
-  tag = {
+  tags = {
     "Name" = (
       "${local.vpc_name}-public-subnet-b"
     )
@@ -52,9 +52,9 @@ resource "aws_subnet" "public-subnet-b" {
 resource "aws_subnet" "private-subnet-a" {
   vpc_id                 = aws_vpc.main.id
   cidr_block             = var.private_subnet_a_cidr
-  aws_availability_zones = data.aws_availability_zones.available.names[0]
+  availability_zones = data.aws_availability_zones.available.names[0]
 
-  tag = {
+  tags = {
     "Name" = (
       "${local.vpc_name}-private-subnet-a"
     )
@@ -66,9 +66,9 @@ resource "aws_subnet" "private-subnet-a" {
 resource "aws_subnet" "private-subnet-b" {
   vpc_id                 = aws_vpc.main.id
   cidr_block             = var.private_subnet_b_cidr
-  aws_availability_zones = data.aws_availability_zones.available.names[1]
+  availability_zones = data.aws_availability_zones.available.names[1]
 
-  tag = {
+  tags = {
     "Name" = (
       "${local.vpc_name}-private-subnet-b"
     )
@@ -81,7 +81,7 @@ resource "aws_subnet" "private-subnet-b" {
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
 
-  tag = {
+  tags = {
     Name = "${local.vpc_name}-igw"
   }
 }
